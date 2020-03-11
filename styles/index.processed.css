@@ -1,0 +1,53 @@
+button {
+  background-color: transparent;
+  border: none;
+  height: 50px;
+}
+
+.burger-icon-cross, .burger-icon-cross::before, .burger-icon-cross::after {
+  display: block;
+  width: 32px;
+  height: 3px;
+  background-color: black;
+  outline: 1px solid transparent;
+  transition-property: background-color, transform;
+  transition-duration: 0.3s;
+  -webkit-transition-property: background-color, -webkit-transform;
+  -moz-transition-property: background-color, -moz-transform;
+  -o-transition-property: background-color, -o-transform;
+}
+
+.burger-icon-cross::before, .burger-icon-cross::after {
+  position: absolute;
+  content: "";
+}
+
+.burger-icon-cross::before {
+  margin-top: -9px;
+}
+
+.burger-icon-cross::after {
+  margin-top: 9px;
+}
+
+.btn-menu.is-active .burger-icon-cross {
+  background-color: transparent;
+}
+
+.btn-menu.is-active .burger-icon-cross::before {
+  background-color: black;
+  transform: translateY(9px) rotate(45deg);
+  -webkit-transform: translateY(9px) rotate(45deg);
+  -moz-transform: translateY(9px) rotate(45deg);
+  -ms-transform: translateY(9px) rotate(45deg);
+  -o-transform: translateY(9px) rotate(45deg);
+}
+
+.btn-menu.is-active .burger-icon-cross::after {
+  background-color: black;
+  transform: translateY(-9px) rotate(-45deg);
+  -webkit-transform: translateY(-9px) rotate(-45deg);
+  -moz-transform: translateY(-9px) rotate(-45deg);
+  -ms-transform: translateY(-9px) rotate(-45deg);
+  -o-transform: translateY(-9px) rotate(-45deg);
+}

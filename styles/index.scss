@@ -1,0 +1,76 @@
+//Creates the burger button
+@mixin burger($width, $height, $gutter, $color, $transistionDuration) {
+    $burger-height: $height !global;
+    $burger-gutter: $gutter !global;
+
+    &, &::before, &::after {
+        display: block;
+        width: $width;
+        height: $height;
+        background-color: $color;
+        outline: 1px solid transparent;
+        transition-property: background-color, transform;
+        transition-duration: $transistionDuration;
+        -webkit-transition-property: background-color, -webkit-transform;
+        -moz-transition-property: background-color, -moz-transform;
+        -o-transition-property: background-color, -o-transform;
+    }
+    &::before, &::after {
+        position: absolute;
+        content: "";
+    }
+
+    &::before {
+        margin-top: -($height + $gutter);
+    }
+
+    &::after {
+        margin-top: $height + $gutter;
+    }
+}
+
+//Burger cross animation
+@mixin burger-cross($color) {
+    & {
+        background-color: transparent;
+    }
+    &::before {
+        background-color: $color;
+        transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        
+        -webkit-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        -moz-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        -ms-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        -o-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+    }
+    &::after {
+        background-color: $color;
+        transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        
+        -webkit-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        -moz-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        -ms-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        -o-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+    }
+}
+
+@mixin burger-squeeze($color) {
+    & {
+        background-color: $color;
+    }
+
+    &::before {
+        
+    }
+}
+button {
+  background-color: transparent;
+  border: none;
+  height: 50px;
+}
+.burger-icon-cross {
+  @include burger(32px, 3px, 6px, black, .3s);
+}
+.btn-menu.is-active .burger-icon-cross {
+  @include burger-cross(black);
+}
